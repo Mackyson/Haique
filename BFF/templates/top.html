@@ -1,11 +1,24 @@
 {% extends "index.html" %}
 {% block content %}
-<h3>newest 30 Haikus</h3>
+<h2 class="page-name">直近30件の俳句</h2>
 {% if Haikus %}
-<ul>
-    {% for Haiku in Haikus %}
-    <li>「{{Haiku.content.first}} {{Haiku.content.second}} {{Haiku.content.third}}」 --<a href="/user/{{Haiku.author_id}}">{{Haiku.content.author_name}}</a></li>
-    {% endfor %}
+<ul class="haiku-list">
+  {% for Haiku in Haikus %}
+    <li class="haiku">
+      <div class="haiku-first">
+        {{Haiku.content.first}}
+      </div>
+      <div class="haiku-second">
+        {{Haiku.content.second}}
+      </div>
+      <div class="haiku-third">
+        {{Haiku.content.third}}
+      </div>
+      <a class="haiku-author" href="/user/{{Haiku.author_id}}">
+        {{Haiku.content.author_name}}
+      </a>
+    </li>
+  {% endfor %}
 </ul>
 {% else %}
 No haiku posted...

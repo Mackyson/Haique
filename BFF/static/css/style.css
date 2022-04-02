@@ -1,9 +1,108 @@
 .navigator{
-	padding:0;
-	display:flex;
-	color:#666666;
+	padding: 0;
+	display: flex;
+	color: #666666;
 }
+
 .navigator-child{
 	list-style-type: none;
+	font-size: 120%;
 	margin-left: 0.5em;
+}
+
+
+body{
+	align-items: start;
+	margin: auto;
+	width: 95%;
+	max-width: 850px;
+	font-family: 'Shippori Mincho', serif;
+	background-color: #f5f5f5;
+}
+
+.page-name{
+	padding: 0.5em;
+	padding-top: 0%;
+	padding-bottom: 0%;
+}
+
+
+.haiku-list{
+	margin: auto;
+	width: 100%;
+	height: 60%;
+	overflow: auto;
+	padding: 0%;
+	writing-mode: vertical-rl;
+	font-family: 'Yuji Syuku', serif;
+	font-size: 130%;
+	list-style-type: none;
+}
+
+.haiku{
+	border-left: #e0ebaf solid 1px;
+	background-image: url("../assets/paper.jpg");
+	background-color: rgba(255,255,255,0.5);
+	background-blend-mode: lighten;
+	padding: 0.5em;
+}
+
+.haiku-list::-webkit-scrollbar{
+	display: none;
+}
+
+.haiku-author{
+	text-decoration:none;
+	color: #69821b;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 800px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+label{
+	color: #aacf53;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-last input[type="text"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn {
+	border-radius: 3px;
+}
+
+.subscription {
+  margin: 2em;
 }

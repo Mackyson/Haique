@@ -1,41 +1,67 @@
 {% extends "index.html" %}
 {% block content %}
-<h3>User page</h3>
-<h4>{{User.user.name}}</h4>
-<form action="/subscribe/{{User.user.user_id}}" method="POST" enctype="multipart/form-data">
-  <button>subscribe</button>
-</form>
-<form action="/unsubscribe/{{User.user.user_id}}" method="POST" enctype="multipart/form-data">
-  <button>unsubscribe</button>
-</form>
-<h5>subscribes</h5>
-{% if User.user.subscription %}
-<ul>
-  {% for user_id in User.user.subscription %}
-  <li><a href="/user/{{user_id}}">user_id:{{user_id}}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-Nobody
-{% endif %}
-<h5>subscribed by</h5>
-{% if User.user.subscribed_by %}
-<ul>
-  {% for user_id in User.user.subscribed_by %}
-  <li><a href="/user/{{user_id}}">user_id:{{user_id}}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-Nobody
-{% endif %}
+
+<div class="container name-subscribe">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>{{User.user.name}}</h2>
+    </div>
+    <div class="col-md-6 nav">
+      <form action="/subscribe/{{User.user.user_id}}" method="POST" enctype="multipart/form-data">
+        <button class="btn btn-primary me-2">フォロー</button>
+      </form>
+      <form action="/unsubscribe/{{User.user.user_id}}" method="POST" enctype="multipart/form-data">
+        <button class="btn btn-outline-primary me-2">フォロー解除</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container subscription">
+  <div class="row">
+    <div class="col-6">
+      <h5>フォロー</h5>
+      {% if User.user.subscription %}
+      {{User.user.subscription | length}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+    <div class="col-6">
+      <h5>フォロワー</h5>
+      {% if User.user.subscribed_by %}
+      {{User.user.subscribed_by | length}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
 <h5>Recent Haikus</h5>
 {% if User.haikus %}
-<ul>
+<ul class="haiku-list">
   {% for Haiku in User.haikus %}
-  <li>「{{Haiku.content.first}} {{Haiku.content.second}} {{Haiku.content.third}}」 --<a href="/user/{{Haiku.author_id}}">{{Haiku.content.author_name}}</a></li>
+    <li class="haiku">
+      <div class="haiku-first">
+          {{Haiku.content.first}}
+      </div>
+      <div class="haiku-second">
+          {{Haiku.content.second}}
+      </div>
+      <div class="haiku-third">
+          {{Haiku.content.third}}
+      </div>
+      <a class="haiku-author" href="/user/{{Haiku.author_id}}">
+          {{Haiku.content.author_name}}
+      </a>
+    </li>
   {% endfor %}
 </ul>
 {% else %}
 No haiku posted yet...
 {% endif %}
+
 {% endblock %}

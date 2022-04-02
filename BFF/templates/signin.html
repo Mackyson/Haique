@@ -1,12 +1,18 @@
 {% extends "index.html" %}
 {% block content %}
-<h3>Sign in</h3>
+<h2 class="page-name">ログイン</h2>
 {% if err!="" %}
 <h4>{{err}}</h4>
 {% endif %}
-<form action="/signin" method="POST" enctype="multipart/form-data">
-	<input type="text" name="name" placeholder="Your name">
-    <input type="password" name="password" placeholder="password">
-	<input type="submit" value="送信">
+<form class="form-signin" action="/signin" method="POST" enctype="multipart/form-data">
+	<div class="form-floating">
+		<input type="text" class="form-control" id="floatingInput" name="name" placeholder="Your name">
+		<label for="floatingInput">Your name</label>
+	</div>
+	<div class="form-floating">
+		<input type="password" class="form-control" name="password" placeholder="Password">
+		<label for="floatingPassword">Password</label>
+	</div>
+	<input class="w-100 btn btn-lg btn-primary" type="submit" value="ログイン">
 </form>
 {% endblock %}

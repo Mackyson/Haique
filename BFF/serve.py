@@ -75,7 +75,7 @@ def post_signin():
         except openapi_client.ApiException as e:
             print("Exception when calling DefaultApi->post_signin: %s\n" % e)
             return render_template('signin.html',title='sign in',err="Wrong password or name")
-        resp = make_response(render_template('signup_done.html',title='sign in'))
+        resp = make_response(render_template('signin_done.html',title='sign in'))
         resp.set_cookie("session_id",api_response.session_id)
         return resp
 
@@ -200,7 +200,7 @@ def get_timeline():
     #     except openapi_client.ApiException as e:
     #         print("Exception when calling DefaultApi->get_timeline: %s\n" % e)
     #         return render_template("session_error.html",title="session error")
-        
+
     #     return render_template('timeline.html',title='timeline', Haikus=api_response)
 
     # 仕方がないので、timelineに関してはAd-hocに実装する。
@@ -209,7 +209,7 @@ def get_timeline():
     r = rq.get(url,json=json_data)
     if r.status_code!=200:
         return render_template('error.html',title='error',err=r.text)
-    else: 
+    else:
         return render_template('timeline.html',title='timeline', Haikus=r.json())
 ## おまじない
 if __name__ == "__main__":

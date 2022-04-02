@@ -1,13 +1,22 @@
 {% extends "index.html" %}
 {% block content %}
-<h3>Post haiku</h3>
+<h2 class="page-name">俳句の投稿</h2>
 {% if err!="" %}
 <h4>{{err}}</h4>
 {% endif %}
-<form action="/post-haiku" method="POST" enctype="multipart/form-data">
-	<input type="text" name="first" placeholder="五月雨を">
-    <input type="text" name="second" placeholder="集めて早し">
-    <input type="text" name="third" placeholder="最上川">
-	<input type="submit" value="送信">
+<form class="form-signin" action="/post-haiku" method="POST" enctype="multipart/form-data">
+	<div class="form-floating">
+		<input type="text" class="form-control" id="floating-first" name="first" placeholder="五月雨を">
+    <label for="floating-first">五月雨を</label>
+	</div>
+	<div class="form-floating">
+		<input type="text" class="form-control" id="floating-second" name="second" placeholder="集めて早し">
+    <label for="floating-second">集めて早し</label>
+	</div>
+  <div class="form-floating form-last">
+		<input type="text" class="form-control" id="floating-third" name="third" placeholder="最上川">
+    <label for="floating-third">最上川</label>
+	</div>
+	<input class="w-100 btn btn-lg btn-primary" type="submit" value="投稿">
 </form>
 {% endblock %}
